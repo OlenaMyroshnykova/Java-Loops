@@ -1,17 +1,35 @@
 package com.loops;
 
-/**
- * Hello world!
- */
-public final class App {
-    private App() {
-    }
+import java.util.Scanner;
 
-    /**
-     * Says hello to the world.
-     * @param args The arguments of the program.
-     */
+public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
+        Scanner scanner = new Scanner(System.in); 
+
+        while (true) {
+            System.out.print("\nIngrese un número para la tabla de multiplicar: ");
+            int number = scanner.nextInt();
+
+            MultiplicationTable table = new MultiplicationTable();
+            table.printTable(number);
+
+            String response;
+            do {
+                System.out.print("\nPresiona Y para continuar... Y/N: ");
+                response = scanner.next().trim(); 
+
+                if (!response.equalsIgnoreCase("Y") && !response.equalsIgnoreCase("N")) {
+                    System.out.println("Por favor, ingrese Y o N.");
+                }
+
+            } while (!response.equalsIgnoreCase("Y") && !response.equalsIgnoreCase("N"));
+
+            if (response.equalsIgnoreCase("N")) {
+                System.out.println("\nChao!");
+                break; 
+            }
+        }
+
+        scanner.close();
+    }    
 }
